@@ -1,6 +1,8 @@
+
 const store = (function(){
-    {
-        items: [
+    const foo = 'bar';
+    
+    return { items: [
           { id: cuid(), name: 'apples', checked: false },
           { id: cuid(), name: 'oranges', checked: false },
           { id: cuid(), name: 'milk', checked: true },
@@ -8,11 +10,6 @@ const store = (function(){
         ],
         hideCheckedItems: false,
         searchTerm: ''
-    };
+    }
 
-    return {
-        items: items,
-        hideCheckedItems: hideCheckedItems,
-        searchTerm: searchTerm
-    };
 }());
