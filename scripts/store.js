@@ -39,6 +39,15 @@ const store = (function(){
         }
     }
 
+    const findAndDelete = function(id) {
+        this.items.filter(function(item) {
+            console.log(items);
+            if (id === items.id) {
+                this .items.splice(item, 1);
+            }
+        })
+    }
+
     return {
         items: items,
         hideCheckedItems: hideCheckedItems,
