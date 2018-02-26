@@ -13,7 +13,7 @@ const store = (function(){
     const searchTerm = '';
 
     const findById = function(id) {
-        return items.find(item => item.id === id);
+        return this.items.find(item => item.id === id);
     }
 
     const addItem = function(name) {
@@ -30,13 +30,23 @@ const store = (function(){
         getItemId.checked = !getItemId.checked;
     }
 
+    const findAndUpdateName = function(id, newName) {
+        try {
+            Item.validateName(newName);
+            this.findById(id).name = newName;
+        } catch(error) {
+            console.log(`Cannot update name: ${error.message}`);
+        }
+    }
+
     return {
         items: items,
         hideCheckedItems: hideCheckedItems,
         searchTerm: searchTerm,
         findById,
         addItem,
-        findAndToggleChecked      
+        findAndToggleChecked,
+        findAndUpdateName      
     }
 
 }());
