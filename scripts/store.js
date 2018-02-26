@@ -11,11 +11,32 @@ const store = (function(){
         ];
     const hideCheckedItems = false;
     const searchTerm = '';
+
+    const findById = function(id) {
+        return items.find(item => item.id === id);
+    }
+
+    const addItem = function(name) {
+        try {
+            Item.validateName(name);
+            this.items.push(Item.create(name));
+        } catch(error) {
+            console.log(`Add item error ${error.message}`);
+        }
+    }
     
+    const findAndToggleChecked = function(id) {
+        let getItemId = this.findById(id);
+        getItemId.checked = !getItemId.checked;
+    }
+
     return {
         items: items,
         hideCheckedItems: hideCheckedItems,
-        searchTerm: searchTerm
+        searchTerm: searchTerm,
+        findById,
+        addItem,
+        findAndToggleChecked      
     }
 
 }());
