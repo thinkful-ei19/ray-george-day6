@@ -40,12 +40,16 @@ const store = (function(){
     }
 
     const findAndDelete = function(id) {
-        this.items.filter(function(item) {
-            console.log(items);
-            if (id === items.id) {
-                this .items.splice(item, 1);
-            }
-        })
+        const itemIndex = this.findById(id);
+        this.items.splice(itemIndex, 1);
+    }
+
+    const toggleCheckedFilter = function() {
+        this.hideCheckedItems = !this.hideCheckedItems;
+    }
+
+    const setSearchTerm = function(val) {
+        this.searchTerm = val;
     }
 
     return {
@@ -55,7 +59,10 @@ const store = (function(){
         findById,
         addItem,
         findAndToggleChecked,
-        findAndUpdateName      
-    }
+        findAndUpdateName,
+        findAndDelete,
+        toggleCheckedFilter,
+        setSearchTerm      
+    };
 
 }());
